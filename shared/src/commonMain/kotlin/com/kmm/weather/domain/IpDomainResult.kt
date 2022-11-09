@@ -1,4 +1,4 @@
-package com.kmm.weather.home_page.ip_api
+package com.kmm.weather.domain
 
 sealed class IpDomainResult {
 

@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.kmm.weather.home_page.DayForecast
+import com.kmm.weather.presentation.DayForecast
 
 @Composable
 fun dailyForecasts(
@@ -37,7 +37,7 @@ private fun getDayNightTemperatureMaxLengths(dailyForecasts: List<DayForecast>):
 @Composable
 private fun getDayTemperature(temperature: Float, maxStringLength: Int): String {
     val currentDayTempLength = temperature.toString().length
-    var dayValue = "°C$temperature"
+    var dayValue = "$temperature °C"
     if (currentDayTempLength < maxStringLength) {
         val lengthDifference = maxStringLength - currentDayTempLength
         for (spaceCount in 0..lengthDifference) {
@@ -50,7 +50,7 @@ private fun getDayTemperature(temperature: Float, maxStringLength: Int): String 
 @Composable
 private fun getNightTemperature(temperature: Float, maxStringLength: Int): String {
     val currentNightTempLength = temperature.toString().length
-    var nightValue = "°C$temperature"
+    var nightValue = "$temperature °C"
     if (currentNightTempLength < maxStringLength) {
         val lengthDifference = maxStringLength - currentNightTempLength
         var spaces = ""

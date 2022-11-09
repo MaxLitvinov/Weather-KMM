@@ -1,4 +1,4 @@
-package com.kmm.weather.home_page
+package com.kmm.weather.presentation
 
 data class WeatherModel(
     var city: String,

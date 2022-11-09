@@ -8,3 +8,6 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 val White = Color(0xFFFFFFFF)
+
+val HomePageBlue = Color(0xFF4776E6)
+val HomePagePurple = Color(0xFF8E54E9)

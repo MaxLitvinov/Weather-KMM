@@ -3,8 +3,8 @@ package com.kmm.weather.android
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kmm.weather.InteractorProvider
-import com.kmm.weather.home_page.HomePageInteractor
-import com.kmm.weather.home_page.HomePageUiState
+import com.kmm.weather.presentation.HomePageInteractor
+import com.kmm.weather.presentation.HomePageUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

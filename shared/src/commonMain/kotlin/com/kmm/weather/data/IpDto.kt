@@ -1,10 +1,10 @@
-package com.kmm.weather.home_page.ip_api
+package com.kmm.weather.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class IpApiResponse(
+data class IpDto(
     @SerialName("status") val status: String,
     @SerialName("country") val country: String,
     @SerialName("countryCode") val countryCode: String,

@@ -1,12 +1,14 @@
 package com.kmm.weather.android.ui
 
 import android.widget.Toast
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -15,18 +17,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kmm.weather.android.MyApplicationTheme
-import com.kmm.weather.home_page.WeatherModel
+import com.kmm.weather.android.theme.WeatherKmmTheme
+import com.kmm.weather.presentation.WeatherModel
+import com.skydoves.landscapist.ImageOptions
+import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
 fun WeatherScreen(
-    model: WeatherModel
+    model: WeatherModel,
+    onDayForecastClick: (Long) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -49,9 +56,10 @@ fun WeatherScreen(
         Spacer(Modifier.height(8.dp))
         Description(model, textStyle)
         Spacer(Modifier.height(24.dp))
-        /*dailyForecasts(model.dailyForecasts) { dayForecast ->
-            onDayForecastClick(dayForecast)
-        }*/
+        dailyForecasts(model.dailyForecasts) { dayForecast ->
+            onDayForecastClick(0)
+        }
+        Spacer(Modifier.height(32.dp))
     }
 }
 
@@ -76,33 +84,34 @@ private fun CityButton(model: WeatherModel, textStyle: TextStyle) {
 
 @Composable
 private fun Image(model: WeatherModel) {
-    /*GlideImage(
-        imageModel = model.iconUrl,
+    GlideImage(
+        imageModel = { model.iconUrl },
         modifier = Modifier.height(200.dp),
-        contentDescription = model.weatherDescription,
-        previewPlaceholder = R.drawable.ic_launcher_foreground,
+        imageOptions = ImageOptions(
+            contentDescription = model.weatherDescription
+        ),
+        previewPlaceholder = 0,//R.drawable.ic_launcher_foreground,
         loading = {
             Box(modifier = Modifier.matchParentSize()) {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         },
         failure = {
-            Image(
-                painter = painterResource(R.drawable.ic_launcher_foreground),
+            androidx.compose.foundation.Image(
+                painter = painterResource(0),//,painterResource(R.drawable.ic_launcher_foreground),
                 contentDescription = model.weatherDescription,
                 modifier = Modifier.height(200.dp),
                 alignment = Alignment.Center,
                 contentScale = ContentScale.Fit
             )
         }
-    )*/
+    )
 }
 
 @Composable
 private fun Temperature(model: WeatherModel, textStyle: TextStyle) {
     Text(
         style = textStyle.copy(fontSize = 64.sp, fontWeight = FontWeight.Bold),
-        //text = stringResource(R.string.home_page_weather, model.temperature)
         text = "${model.temperature}°C"
     )
 }
@@ -125,7 +134,10 @@ private fun WeatherScreenPreview() {
         weatherDescription = "Rainy",
         dailyForecasts = listOf()
     )
-    MyApplicationTheme {
-        WeatherScreen(model = fakeModel)
+    WeatherKmmTheme {
+        WeatherScreen(
+            model = fakeModel,
+            onDayForecastClick = {}
+        )
     }
 }

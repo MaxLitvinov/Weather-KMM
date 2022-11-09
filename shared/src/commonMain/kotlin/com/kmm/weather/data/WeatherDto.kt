@@ -1,4 +1,4 @@
-package com.kmm.weather.home_page.open_weather_map
+package com.kmm.weather.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -27,7 +27,7 @@ data class WeatherDto(
     @SerialName("current")
     val current: CurrentDto,
     @SerialName("hourly")
-    val hourlyForecasts: List<HourlyDto>? = null,
+    val hourlyForecasts: List<HourlyDto>?,
     @SerialName("daily")
     val dailyForecasts: List<DailyDto>
 )
@@ -84,9 +84,9 @@ data class CurrentDto(
     @SerialName("wind_speed")
     val windSpeed: Float,
     @SerialName("rain")
-    val rain: RainDto? = null,
+    val rain: RainDto?,
     @SerialName("snow")
-    val snow: SnowDto? = null,
+    val snow: SnowDto?,
     @SerialName("weather")
     val weather: List<WeatherDetailsDto>
 )
@@ -218,9 +218,9 @@ data class DailyDto(
     @SerialName("pop")
     val pop: Float,
     @SerialName("rain")
-    val rain: Float? = null,
+    val rain: Float?,
     @SerialName("snow")
-    val snow: Float? = null,
+    val snow: Float?,
     @SerialName("weather")
     val weather: List<WeatherDetailsDto>
 )

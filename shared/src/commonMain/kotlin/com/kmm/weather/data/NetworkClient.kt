@@ -1,4 +1,4 @@
-package com.kmm.weather.network
+package com.kmm.weather.data
 
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
@@ -6,8 +6,10 @@ import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
+@OptIn(ExperimentalSerializationApi::class)
 class NetworkClient {
 
     companion object {
@@ -26,6 +28,7 @@ class NetworkClient {
                     ignoreUnknownKeys = true
                     isLenient = true
                     prettyPrint = true
+                    explicitNulls = false
                     //useAlternativeNames = false
                 })
             }

@@ -4,14 +4,6 @@ plugins {
     id("com.android.library")
 }
 
-/*version = "1.0.0"
-val ktorVersion = "1.6.1"
-val kodeinVersion = "7.6.0"
-val logbackVersion = "1.0.0"
-val napierVersion = "1.5.0"
-val serializationVersion = "1.1.0"
-val coroutineVersion = "1.5.1-native-mt"*/
-
 val coroutineVersion = "1.6.4"
 val kodeinVersion = "7.15.0"
 val ktorVersion = "2.1.3"
@@ -33,40 +25,19 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                /*//implementation("io.github.aakira:napier:$napierVersion")
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
-                implementation("org.kodein.di:kodein-di:$kodeinVersion")
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-logging:$ktorVersion")
-                implementation("io.ktor:ktor-client-auth:$ktorVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-                //implementation("ch.qos.logback:logback-classic:$logbackVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion") {
-                    version {
-                        strictly(coroutineVersion)
-                    }
-                }*/
-                //implementation("io.ktor:ktor-client-android:$ktorVersion")
                 implementation("io.ktor:ktor-client-auth:$ktorVersion")
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-logging:$ktorVersion")
-                implementation("io.ktor:ktor-client-gson:$ktorVersion")
-                implementation("io.ktor:ktor-client-json:$ktorVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-                implementation("org.kodein.di:kodein-di:$kodeinVersion")
-
-                //implementation("io.ktor:ktor-client-core:$ktorVersion")
-                /*implementation("io.ktor:ktor-client-apache:$ktorVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")*/
-
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+
                 implementation("org.kodein.di:kodein-di:$kodeinVersion")
             }
         }
@@ -106,10 +77,10 @@ kotlin {
 
 android {
     namespace = "com.kmm.weather"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 33
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
